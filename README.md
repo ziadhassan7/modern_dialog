@@ -19,7 +19,7 @@ Modern custom dialog with simple implementation. Adaptive for Android, IOS, and 
 ## 📦 Usage
 # Standard Dialog
 
-<p align="center">
+<p>
     <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/eda5fd1e-5bb2-4791-86e2-914b810960c8">
 </p>
 
@@ -61,7 +61,7 @@ ModernDialog.showStandard(
 
 # Info Dialog
 
-<p align="center">
+<p>
     <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/a4da96c9-720c-4113-bf74-aad532c57cdb">
 </p>
 
@@ -95,7 +95,7 @@ ModernDialog.showInfo(
 # Trailing Action Dialog
 Use this when you need a dialog with two important action buttons
 
-<p align="center">
+<p>
     <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/65a94f45-6091-4d60-b83c-d475e3c1ae49">
 </p>
 
@@ -135,7 +135,7 @@ ModernDialog.showTrailingAction(
 Dialog with buttons aligned vertically.
 Here you can add a button by using the `DialogButton` class made for you.
 
-<p align="center">
+<p>
     <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/d3efdf9b-8019-4128-a4a8-d7a328e87ff3">
 </p>
 
@@ -182,7 +182,7 @@ ModernDialog.showVerticalDialog(
 
 # Custom Dialog
 
-<p align="center">
+<p>
     <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/b6334a46-129c-48ac-993c-9ae91c1c7b10">
 </p>
 
