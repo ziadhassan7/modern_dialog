@@ -18,7 +18,7 @@ class ModernDialog {
   /// Main button title
   String? buttonTitle;
 
-  /// Main button function
+  /// Function to handle main button click
   Function()? onAccept;
   /// Perform an action on closing the dialog
   Function()? onCancel;
@@ -27,10 +27,10 @@ class ModernDialog {
   Color? mainButtonColor;
   /// Cancel button color
   Color? cancelButtonColor;
-  /// Cancel button Text
+  /// Cancel button title
   String? cancelButtonTitle;
 
-  /// close the dialog when pressing the main button. true by default
+  /// Close the dialog when pressing the main button. true by default
   bool? shouldCloseOnMainButton;
   /// Dialog background color
   Color? backgroundColor;
@@ -40,13 +40,11 @@ class ModernDialog {
 
   /// Text for the trailing button (secondary button)
   String? trailingButtonTitle;
-  /// function when the trailing button is pressed (secondary button)
+  /// Function when the trailing button is pressed (secondary button)
   Function()? onTrailingPressed;
-  /// function when the trailing button is pressed (secondary button)
+  /// Custom trailing button color
   Color? trailingButtonColor;
 
-  /// Custom view for the Custom Dialog
-  Widget? view;
 
 
   /// Standard Dialog
