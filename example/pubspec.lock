@@ -111,10 +111,10 @@ packages:
     dependency: "direct main"
     description:
       name: modern_dialog
-      sha256: "1aeddc7a85501f8dec35cb3e5a919f0dfd4fda5be55a560b5261a1c101fda935"
+      sha256: e1b940e6484c8aa5033c9bf4b20d5cfd27c725ae53cc9a24e2c712f9e2785762
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "1.0.0"
   path:
     dependency: transitive
     description:

@@ -5,3 +5,12 @@
 ## 1.0.0
 
 * Release
+
+## 1.0.1
+
+* Batch fix
+
+## 1.0.2
+
+* Batch fix.
+* Update Documentation.
