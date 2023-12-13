@@ -74,7 +74,10 @@ class VerticalDialog {
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 2),
                         decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary.withOpacity(0.09),
+                            color:
+                            buttons[i].color != null
+                                ? buttons[i].color!.withOpacity(0.09)
+                                : Theme.of(context).colorScheme.primary.withOpacity(0.07),
                             borderRadius: const BorderRadius.all(Radius.circular(6))
                         ),
 
@@ -116,11 +119,11 @@ class VerticalDialog {
             /// Child Content Widget
             content:
             title != null
-              ? SingleChildScrollView(child: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: content,
-              ))
-              : null,
+                ? SingleChildScrollView(child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: content,
+            ))
+                : null,
 
 
             actions: <Widget>[
