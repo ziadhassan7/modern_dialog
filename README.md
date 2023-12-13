@@ -19,17 +19,9 @@ Modern custom dialog with simple implementation. Adaptive for Android, IOS, and 
 ## 📦 Usage
 # Standard Dialog
 
-![ModernDialog](https://github.com/ziadhassan7/modern_dialog/assets/31738365/eda5fd1e-5bb2-4791-86e2-914b810960c8)
-
 <p align="center">
-  <img width="300" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/66a7d9f5-c704-42e5-9390-206a29baca02">
-  .
-  .
-  .
-  .
-  <img width="300" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/a2b1c3dd-1121-42ec-b5c1-64f497ac564c">
+    <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/eda5fd1e-5bb2-4791-86e2-914b810960c8">
 </p>
-
 
 ```dart
 ModernDialog.showStandard(
@@ -69,7 +61,9 @@ ModernDialog.showStandard(
 
 # Info Dialog
 
-![ModernDialog-4](https://github.com/ziadhassan7/modern_dialog/assets/31738365/a4da96c9-720c-4113-bf74-aad532c57cdb)
+<p align="center">
+    <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/a4da96c9-720c-4113-bf74-aad532c57cdb">
+</p>
 
 
 ```dart
@@ -101,7 +95,9 @@ ModernDialog.showInfo(
 # Trailing Action Dialog
 Use this when you need a dialog with two important action buttons
 
-![ModernDialog-2](https://github.com/ziadhassan7/modern_dialog/assets/31738365/65a94f45-6091-4d60-b83c-d475e3c1ae49)
+<p align="center">
+    <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/65a94f45-6091-4d60-b83c-d475e3c1ae49">
+</p>
 
 ```dart
 ModernDialog.showTrailingAction(
@@ -139,7 +135,9 @@ ModernDialog.showTrailingAction(
 Dialog with buttons aligned vertically.
 Here you can add a button by using the `DialogButton` class made for you.
 
-![ModernDialog-3](https://github.com/ziadhassan7/modern_dialog/assets/31738365/d3efdf9b-8019-4128-a4a8-d7a328e87ff3)
+<p align="center">
+    <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/d3efdf9b-8019-4128-a4a8-d7a328e87ff3">
+</p>
 
 
 ```dart
@@ -184,7 +182,9 @@ ModernDialog.showVerticalDialog(
 
 # Custom Dialog
 
-![ModernDialog-1](https://github.com/ziadhassan7/modern_dialog/assets/31738365/b6334a46-129c-48ac-993c-9ae91c1c7b10)
+<p align="center">
+    <img width="700" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/b6334a46-129c-48ac-993c-9ae91c1c7b10">
+</p>
 
 
 ```dart
@@ -207,3 +207,39 @@ ModernDialog.showCustom(
 ```
 
 </details>
+
+
+## 🎯Parameters
+
+| Name | Description | Data type | Default value | 
+|:------------|-----------------------------------------|----------|-----------|
+| icon | icon showing at the top center | Widget | - |
+| title | Dialog's title | String | - | 
+| content | Widget showing the dialog's content | Widget | - | 
+| buttonTitle | Function that let you build the group separator widget | String | - | 
+| onAccept | Function to handle main button click | Function() | - | 
+| onCancel | Perform an action on closing the dialog | Function() | - | 
+| cancelButtonTitle | Cancel button title | String | "Cancel" |
+| cancelButtonColor | Cancel button color | Color | - |
+| mainButtonColor | Main button color | Color | ColorScheme.primary |
+| shouldCloseOnMainButton | Close the dialog when pressing the main button. | bool | true |
+| backgroundColor | Dialog's background color. (Only Android) | Color | white | 
+| disableTintColor | Disables the color tint applied on the background color. (Only Android) | bool | false |
+
+**Vertical Dialog**
+| Name | Description | Data type | Default value | 
+|:------------|-----------------------------------------|----------|-----------|
+| buttons | Custom button for the vertical dialog. | List<DialogButton> | - |
+
+**Trailing Dialog**
+| Name | Description | Data type | Default value | 
+|:------------|-----------------------------------------|----------|-----------|
+| trailingButtonTitle | Text for the trailing button. (secondary button) | String | - | 
+| onTrailingPressed | Handle trailing button press. | Function() | - |
+| trailingButtonColor | Custom trailing button color. | Color | - |
+
+**Custom Dialog**
+| Name | Description | Data type | Default value | 
+|:------------|-----------------------------------------|----------|-----------|
+| view | Widget for the the Custom Dialog | Widget | - | 
+ 
