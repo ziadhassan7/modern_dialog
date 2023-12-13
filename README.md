@@ -229,7 +229,7 @@ ModernDialog.showCustom(
 **Vertical Dialog**
 | Name | Description | Data type | Default value | 
 |:------------|-----------------------------------------|----------|-----------|
-| buttons | Custom button for the vertical dialog. | List<DialogButton> | - |
+| buttons | Custom button for the vertical dialog. | List < DialogButton > | - |
 
 **Trailing Dialog**
 | Name | Description | Data type | Default value | 
