@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +23,8 @@ class InfoDialog {
     required this.disableTintColor,
   }) {
     // Decide dialog layout based on platform
-    if (Platform.isIOS) {
+    if(defaultTargetPlatform == TargetPlatform.iOS) {
       _cupertinoView();
-    } else if (Platform.isAndroid) {
-      _materialView();
     } else {
       _materialView();
     }
