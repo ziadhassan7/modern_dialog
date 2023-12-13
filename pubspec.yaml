@@ -1,6 +1,6 @@
 name: modern_dialog
-description: Modern custom dialog with simple implementation.
-version: 1.0.2
+description: Modern custom dialog with simple implementation. Adaptive to Android & IOS.
+version: 1.0.3
 repository: https://github.com/ziadhassan7/modern_dialog
 
 environment:
