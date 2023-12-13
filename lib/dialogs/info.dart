@@ -23,7 +23,7 @@ class InfoDialog {
     required this.disableTintColor,
   }) {
     // Decide dialog layout based on platform
-    if(defaultTargetPlatform == TargetPlatform.iOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
       _cupertinoView();
     } else {
       _materialView();
