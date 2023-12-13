@@ -1,4 +1,4 @@
-Modern custom dialog with simple implementation. Adaptive for Android, IOS, and all platforms.
+Modern custom dialog with simple implementation. Adaptive to Android, IOS, and all platforms.
 
 <p align="center">
     <img width="300" src="https://github.com/ziadhassan7/modern_dialog/assets/31738365/80f39871-b046-4a25-bdba-e78c4c80013b">
