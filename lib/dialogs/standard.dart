@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
-
 class StandardDialog {
-
   BuildContext context;
 
   Widget? icon;
@@ -37,8 +35,7 @@ class StandardDialog {
     required this.shouldCloseOnMainButton,
     required this.backgroundColor,
     required this.disableTintColor,
-  }){
-
+  }) {
     // Decide dialog layout based on platform
     if (Platform.isIOS) {
       _cupertinoView();
@@ -49,17 +46,16 @@ class StandardDialog {
     }
   }
 
-
-
-  _materialView(){
-    Color mainButtonColor = buttonColor ?? Theme.of(context).colorScheme.primary;
+  _materialView() {
+    Color mainButtonColor =
+        buttonColor ?? Theme.of(context).colorScheme.primary;
 
     showDialog<String>(
         context: context,
-        builder: (BuildContext context)
-        {
+        builder: (BuildContext context) {
           return AlertDialog(
             surfaceTintColor: disableTintColor ? backgroundColor : null,
+
             /// Background Color
             backgroundColor: backgroundColor,
 
@@ -70,7 +66,8 @@ class StandardDialog {
             title: title != null ? Text(title!) : null,
 
             /// Child Content Widget
-            content: SingleChildScrollView(child: Padding(
+            content: SingleChildScrollView(
+                child: Padding(
               padding: const EdgeInsets.only(top: 10),
               child: content,
             )),
@@ -79,7 +76,7 @@ class StandardDialog {
               /// Cancel Button
               TextButton(
                 onPressed: () {
-                  if(onCancel != null){
+                  if (onCancel != null) {
                     onCancel!();
                   }
                   Navigator.pop(context);
@@ -92,14 +89,13 @@ class StandardDialog {
 
               /// Confirm Button
               TextButton(
-                  onPressed: (){
+                  onPressed: () {
                     onAccept();
                     //close window
-                    if(shouldCloseOnMainButton){
+                    if (shouldCloseOnMainButton) {
                       Navigator.pop(context);
                     }
                   },
-
                   style: ButtonStyle(
                     //color
                     backgroundColor: MaterialStateProperty.all(mainButtonColor),
@@ -114,33 +110,33 @@ class StandardDialog {
         });
   }
 
-
-  _cupertinoView(){
-
+  _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
-        builder: (BuildContext context)
-        {
+        builder: (BuildContext context) {
           return CupertinoAlertDialog(
             /// Title
             title: title != null
-                ? Text(title!, style: const TextStyle(fontSize: 18),)
+                ? Text(
+                    title!,
+                    style: const TextStyle(fontSize: 18),
+                  )
                 : SingleChildScrollView(child: content),
 
             /// Child Content Widget
-            content:
-            title != null
-              ? SingleChildScrollView(child: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: content,
-              ))
-              : null,
+            content: title != null
+                ? SingleChildScrollView(
+                    child: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: content,
+                  ))
+                : null,
 
             actions: <Widget>[
               /// Cancel Button
               CupertinoDialogAction(
                 onPressed: () {
-                  if(onCancel != null){
+                  if (onCancel != null) {
                     onCancel!();
                   }
                   Navigator.pop(context);
@@ -153,16 +149,19 @@ class StandardDialog {
 
               /// Confirm Button
               CupertinoDialogAction(
-                  onPressed: (){
+                  onPressed: () {
                     onAccept();
                     //close window
-                    if(shouldCloseOnMainButton){
+                    if (shouldCloseOnMainButton) {
                       Navigator.pop(context);
                     }
                   },
 
                   //text
-                  child: Text(buttonTitle, style: TextStyle(color: buttonColor),)),
+                  child: Text(
+                    buttonTitle,
+                    style: TextStyle(color: buttonColor),
+                  )),
             ],
           );
         });
