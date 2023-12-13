@@ -107,6 +107,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  modern_dialog:
+    dependency: "direct main"
+    description:
+      name: modern_dialog
+      sha256: "1aeddc7a85501f8dec35cb3e5a919f0dfd4fda5be55a560b5261a1c101fda935"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   path:
     dependency: transitive
     description:
@@ -186,3 +194,4 @@ packages:
     version: "0.1.4-beta"
 sdks:
   dart: ">=3.1.5 <4.0.0"
+  flutter: ">=1.17.0"
