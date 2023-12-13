@@ -2,3 +2,7 @@
 
 * Batch fix.
 * Update Documentation.
+
+## 1.0.6
+
+* Web support.
