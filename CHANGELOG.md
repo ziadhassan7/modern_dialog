@@ -18,3 +18,7 @@
 ## 1.0.3
 
 * Batch fix.
+
+## 1.0.4
+
+* Update Documentation.
