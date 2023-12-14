@@ -209,7 +209,7 @@ ModernDialog.showCustom(
 </details>
 
 
-## 🎯Parameters
+## 🧱 Parameters
 
 | Name | Description | Data type | Default value | 
 |:------------|-----------------------------------------|----------|-----------|
