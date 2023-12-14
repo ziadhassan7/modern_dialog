@@ -1,6 +1,6 @@
 ## 1.0.5
 
-* Batch fix.
+* Patch fix.
 * Update Documentation.
 
 ## 1.0.6
@@ -9,4 +9,4 @@
 
 ## 1.0.7
 
-* Batch fix.
+* Patch fix.
