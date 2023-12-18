@@ -36,59 +36,62 @@ class VerticalDialog {
     showDialog<String>(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            surfaceTintColor: disableTintColor ? backgroundColor : null,
+          return Theme(
+            data: ThemeData(useMaterial3: true),
+            child: AlertDialog(
+              surfaceTintColor: disableTintColor ? backgroundColor : null,
 
-            /// Background Color
-            backgroundColor: backgroundColor,
+              /// Background Color
+              backgroundColor: backgroundColor,
 
-            /// Icon
-            icon: icon,
+              /// Icon
+              icon: icon,
 
-            /// Title
-            title: title != null ? Text(title!) : null,
+              /// Title
+              title: title != null ? Text(title!) : null,
 
-            /// Child Content Widget
-            content: SingleChildScrollView(
-                child: Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: content,
-            )),
+              /// Child Content Widget
+              content: SingleChildScrollView(
+                  child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: content,
+              )),
 
-            actions: <Widget>[
-              Column(
-                children: [
-                  for (int i = 0; i < buttons.length; i++)
-                    Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        decoration: BoxDecoration(
-                            color: buttons[i].color != null
-                                ? buttons[i].color!.withOpacity(0.09)
-                                : Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.07),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(6))),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            TextButton(
-                              onPressed: buttons[i].onPressed,
-                              child: Text(
-                                buttons[i].title,
-                                style: TextStyle(color: buttons[i].color),
+              actions: <Widget>[
+                Column(
+                  children: [
+                    for (int i = 0; i < buttons.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          decoration: BoxDecoration(
+                              color: buttons[i].color != null
+                                  ? buttons[i].color!.withOpacity(0.09)
+                                  : Theme.of(context)
+                                      .colorScheme
+                                      .primary
+                                      .withOpacity(0.07),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(6))),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              TextButton(
+                                onPressed: buttons[i].onPressed,
+                                child: Text(
+                                  buttons[i].title,
+                                  style: TextStyle(color: buttons[i].color),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                ],
-              )
-            ],
+                      )
+                  ],
+                )
+              ],
+            ),
           );
         });
   }

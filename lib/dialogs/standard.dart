@@ -46,65 +46,72 @@ class StandardDialog {
   }
 
   _materialView() {
+    //main button color
     Color mainButtonColor =
         buttonColor ?? Theme.of(context).colorScheme.primary;
+    //cancel button color
+    cancelButtonColor ??= Theme.of(context).colorScheme.secondary;
 
     showDialog<String>(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            surfaceTintColor: disableTintColor ? backgroundColor : null,
+          return Theme(
+            data: ThemeData(useMaterial3: true),
+            child: AlertDialog(
+              surfaceTintColor: disableTintColor ? backgroundColor : null,
 
-            /// Background Color
-            backgroundColor: backgroundColor,
+              /// Background Color
+              backgroundColor: backgroundColor,
 
-            /// Icon
-            icon: icon,
+              /// Icon
+              icon: icon,
 
-            /// Title
-            title: title != null ? Text(title!) : null,
+              /// Title
+              title: title != null ? Text(title!) : null,
 
-            /// Child Content Widget
-            content: SingleChildScrollView(
-                child: Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: content,
-            )),
+              /// Child Content Widget
+              content: SingleChildScrollView(
+                  child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: content,
+              )),
 
-            actions: <Widget>[
-              /// Cancel Button
-              TextButton(
-                onPressed: () {
-                  if (onCancel != null) {
-                    onCancel!();
-                  }
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  cancelButtonTitle,
-                  style: TextStyle(color: cancelButtonColor),
-                ),
-              ),
-
-              /// Confirm Button
-              TextButton(
+              actions: <Widget>[
+                /// Cancel Button
+                TextButton(
                   onPressed: () {
-                    onAccept();
-                    //close window
-                    if (shouldCloseOnMainButton) {
-                      Navigator.pop(context);
+                    if (onCancel != null) {
+                      onCancel!();
                     }
+                    Navigator.pop(context);
                   },
-                  style: ButtonStyle(
-                    //color
-                    backgroundColor: MaterialStateProperty.all(mainButtonColor),
-                  ),
-                  //text
                   child: Text(
-                    buttonTitle,
-                    style: TextStyle(color: backgroundColor),
-                  )),
-            ],
+                    cancelButtonTitle,
+                    style: TextStyle(color: cancelButtonColor),
+                  ),
+                ),
+
+                /// Confirm Button
+                TextButton(
+                    onPressed: () {
+                      onAccept();
+                      //close window
+                      if (shouldCloseOnMainButton) {
+                        Navigator.pop(context);
+                      }
+                    },
+                    style: ButtonStyle(
+                      //color
+                      backgroundColor:
+                          MaterialStateProperty.all(mainButtonColor),
+                    ),
+                    //text
+                    child: Text(
+                      buttonTitle,
+                      style: TextStyle(color: backgroundColor),
+                    )),
+              ],
+            ),
           );
         });
   }

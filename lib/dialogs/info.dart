@@ -37,34 +37,37 @@ class InfoDialog {
     showDialog<String>(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            surfaceTintColor: disableTintColor ? backgroundColor : null,
+          return Theme(
+            data: ThemeData(useMaterial3: true),
+            child: AlertDialog(
+              surfaceTintColor: disableTintColor ? backgroundColor : null,
 
-            /// Background Color
-            backgroundColor: backgroundColor,
+              /// Background Color
+              backgroundColor: backgroundColor,
 
-            title: title != null ? Text(title!) : null,
+              title: title != null ? Text(title!) : null,
 
-            /// Child Content Widget
-            content: SingleChildScrollView(
-                child: Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: content,
-            )),
+              /// Child Content Widget
+              content: SingleChildScrollView(
+                  child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: content,
+              )),
 
-            actions: <Widget>[
-              /// Confirm Button
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(mainButtonColor),
+              actions: <Widget>[
+                /// Confirm Button
+                ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(mainButtonColor),
+                  ),
+                  child: Text(
+                    buttonTitle,
+                    style: TextStyle(color: backgroundColor),
+                  ),
                 ),
-                child: Text(
-                  buttonTitle,
-                  style: TextStyle(color: backgroundColor),
-                ),
-              ),
-            ],
+              ],
+            ),
           );
         });
   }

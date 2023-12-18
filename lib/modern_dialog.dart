@@ -2,7 +2,7 @@ library modern_dialog;
 
 import 'package:flutter/material.dart';
 import 'dialogs/info.dart';
-import 'dialogs/trailling_action.dart';
+import 'dialogs/trailing_action.dart';
 import 'dialogs/vertical.dart';
 import 'dialogs/custom.dart';
 import 'dialogs/standard.dart';
