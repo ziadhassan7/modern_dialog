@@ -28,12 +28,15 @@ class CustomDialog {
     showDialog<String>(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            surfaceTintColor: disableTintColor ? backgroundColor : null,
-            backgroundColor: backgroundColor,
+          return Theme(
+            data: ThemeData(useMaterial3: true),
+            child: AlertDialog(
+              surfaceTintColor: disableTintColor ? backgroundColor : null,
+              backgroundColor: backgroundColor,
 
-            /// Child Content Widget
-            content: SingleChildScrollView(child: view),
+              /// Child Content Widget
+              content: SingleChildScrollView(child: view),
+            ),
           );
         });
   }
