@@ -18,3 +18,6 @@
 ## 1.0.9
 * Adjust layout.
 * Support material3 by default
+
+## 1.1.0
+* Adjust layout.
