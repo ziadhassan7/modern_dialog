@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +11,7 @@ class VerticalDialog {
 
   List<DialogButton> buttons;
 
+  bool dialogDismissible;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -21,6 +21,7 @@ class VerticalDialog {
     this.title,
     required this.content,
     required this.buttons,
+    required this.dialogDismissible,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -35,62 +36,67 @@ class VerticalDialog {
   _materialView() {
     showDialog<String>(
         context: context,
+        barrierDismissible: dialogDismissible,
         builder: (BuildContext context) {
-          return Theme(
-            data: ThemeData(useMaterial3: true),
-            child: AlertDialog(
-              surfaceTintColor: disableTintColor ? backgroundColor : null,
+          return PopScope(
+            canPop: dialogDismissible,
 
-              /// Background Color
-              backgroundColor: backgroundColor,
+            child: Theme(
+              data: ThemeData(useMaterial3: true),
+              child: AlertDialog(
+                surfaceTintColor: disableTintColor ? backgroundColor : null,
 
-              /// Icon
-              icon: icon,
+                /// Background Color
+                backgroundColor: backgroundColor,
 
-              /// Title
-              title: title != null ? Text(title!) : null,
+                /// Icon
+                icon: icon,
 
-              /// Child Content Widget
-              content: SingleChildScrollView(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: content,
-              )),
+                /// Title
+                title: title != null ? Text(title!) : null,
 
-              actions: <Widget>[
-                Column(
-                  children: [
-                    for (int i = 0; i < buttons.length; i++)
-                      Padding(
-                        padding: const EdgeInsets.all(4),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
-                          decoration: BoxDecoration(
-                              color: buttons[i].color != null
-                                  ? buttons[i].color!.withOpacity(0.09)
-                                  : Theme.of(context)
-                                      .colorScheme
-                                      .primary
-                                      .withOpacity(0.07),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(6))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              TextButton(
-                                onPressed: buttons[i].onPressed,
-                                child: Text(
-                                  buttons[i].title,
-                                  style: TextStyle(color: buttons[i].color),
+                /// Child Content Widget
+                content: SingleChildScrollView(
+                    child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: content,
+                )),
+
+                actions: <Widget>[
+                  Column(
+                    children: [
+                      for (int i = 0; i < buttons.length; i++)
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            decoration: BoxDecoration(
+                                color: buttons[i].color != null
+                                    ? buttons[i].color!.withOpacity(0.09)
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withOpacity(0.07),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(6))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                TextButton(
+                                  onPressed: buttons[i].onPressed,
+                                  child: Text(
+                                    buttons[i].title,
+                                    style: TextStyle(color: buttons[i].color),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                  ],
-                )
-              ],
+                        )
+                    ],
+                  )
+                ],
+              ),
             ),
           );
         });
@@ -99,53 +105,58 @@ class VerticalDialog {
   _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
+        barrierDismissible: dialogDismissible,
         builder: (BuildContext context) {
-          return CupertinoAlertDialog(
-            /// Title
-            title: title != null
-                ? Text(
-                    title!,
-                    style: const TextStyle(fontSize: 18),
-                  )
-                : SingleChildScrollView(child: content),
+          return PopScope(
+            canPop: dialogDismissible,
 
-            /// Child Content Widget
-            content: title != null
-                ? SingleChildScrollView(
-                    child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: content,
-                  ))
-                : null,
+            child: CupertinoAlertDialog(
+              /// Title
+              title: title != null
+                  ? Text(
+                      title!,
+                      style: const TextStyle(fontSize: 18),
+                    )
+                  : SingleChildScrollView(child: content),
 
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 4, bottom: 10),
-                child: Column(
-                  children: [
-                    for (int i = 0; i < buttons.length; i++)
-                      Column(
-                        children: [
-                          // Button
-                          CupertinoDialogAction(
-                            onPressed: buttons[i].onPressed,
-                            child: Text(
-                              buttons[i].title,
-                              style: TextStyle(color: buttons[i].color),
+              /// Child Content Widget
+              content: title != null
+                  ? SingleChildScrollView(
+                      child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: content,
+                    ))
+                  : null,
+
+              actions: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 4, bottom: 10),
+                  child: Column(
+                    children: [
+                      for (int i = 0; i < buttons.length; i++)
+                        Column(
+                          children: [
+                            // Button
+                            CupertinoDialogAction(
+                              onPressed: buttons[i].onPressed,
+                              child: Text(
+                                buttons[i].title,
+                                style: TextStyle(color: buttons[i].color),
+                              ),
                             ),
-                          ),
 
-                          // Divider between buttons
-                          // unless it's the last item
-                          Visibility(
-                              visible: i != (buttons.length - 1),
-                              child: const Divider()),
-                        ],
-                      )
-                  ],
-                ),
-              )
-            ],
+                            // Divider between buttons
+                            // unless it's the last item
+                            Visibility(
+                                visible: i != (buttons.length - 1),
+                                child: const Divider()),
+                          ],
+                        )
+                    ],
+                  ),
+                )
+              ],
+            ),
           );
         });
   }

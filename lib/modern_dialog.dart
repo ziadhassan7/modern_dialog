@@ -54,6 +54,10 @@ class ModernDialog {
   /// Custom trailing button color
   Color? trailingButtonColor;
 
+  /// Allow dialog to be dismissible
+  bool dialogDismissible;
+
+
   /// Standard Dialog
   /// ---------------
   /// two buttons
@@ -70,6 +74,7 @@ class ModernDialog {
     this.cancelButtonColor,
     this.cancelButtonTitle = "Cancel",
     this.shouldCloseOnMainButton = true,
+    this.dialogDismissible = true,
     this.backgroundColor = Colors.white,
     this.disableTintColor = false,
   }) {
@@ -84,6 +89,7 @@ class ModernDialog {
         cancelButtonColor: cancelButtonColor,
         cancelButtonTitle: cancelButtonTitle!,
         shouldCloseOnMainButton: shouldCloseOnMainButton!,
+        dialogDismissible: dialogDismissible,
         backgroundColor: backgroundColor!,
         disableTintColor: disableTintColor!);
   }
@@ -98,6 +104,7 @@ class ModernDialog {
     required this.content,
     this.buttonTitle = "Ok",
     this.mainButtonColor,
+    this.dialogDismissible = true,
     this.backgroundColor = Colors.white,
     this.disableTintColor = false,
   }) {
@@ -106,6 +113,7 @@ class ModernDialog {
         content: content,
         buttonTitle: buttonTitle!,
         buttonColor: mainButtonColor,
+        dialogDismissible: dialogDismissible,
         backgroundColor: backgroundColor!,
         disableTintColor: disableTintColor!);
   }
@@ -123,6 +131,7 @@ class ModernDialog {
     this.onTrailingPressed,
     this.trailingButtonColor,
     this.mainButtonColor,
+    this.dialogDismissible = true,
     this.backgroundColor = Colors.white,
     this.disableTintColor = false,
   }) {
@@ -136,6 +145,7 @@ class ModernDialog {
       onTrailingPressed: onTrailingPressed!,
       trailingButtonColor: trailingButtonColor,
       buttonColor: mainButtonColor,
+      dialogDismissible: dialogDismissible,
       backgroundColor: backgroundColor!,
       disableTintColor: disableTintColor!,
     );
@@ -150,6 +160,7 @@ class ModernDialog {
     this.title,
     required this.content,
     required List<DialogButton> buttons,
+    this.dialogDismissible = true,
     this.backgroundColor = Colors.white,
     this.disableTintColor = false,
   }) {
@@ -159,6 +170,7 @@ class ModernDialog {
       title: title,
       content: content,
       buttons: buttons,
+      dialogDismissible: dialogDismissible,
       backgroundColor: backgroundColor!,
       disableTintColor: disableTintColor!,
     );
@@ -172,6 +184,7 @@ class ModernDialog {
     required Widget view,
     bool disablePadding = false,
     double? borderRadius,
+    bool dialogDismissible = true,
     Color backgroundColor = Colors.white,
     bool disableTintColor = false,
   }) {
@@ -180,6 +193,7 @@ class ModernDialog {
       view: view,
       disablePadding: disablePadding,
       borderRadius: borderRadius,
+      dialogDismissible: dialogDismissible,
       backgroundColor: backgroundColor,
       disableTintColor: disableTintColor,
     );

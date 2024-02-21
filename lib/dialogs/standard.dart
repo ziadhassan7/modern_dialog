@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +18,7 @@ class StandardDialog {
   String cancelButtonTitle;
 
   bool shouldCloseOnMainButton;
+  bool dialogDismissible;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -34,6 +34,7 @@ class StandardDialog {
     this.cancelButtonColor,
     required this.cancelButtonTitle,
     required this.shouldCloseOnMainButton,
+    required this.dialogDismissible,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -54,31 +55,102 @@ class StandardDialog {
 
     showDialog<String>(
         context: context,
+        barrierDismissible: dialogDismissible,
         builder: (BuildContext context) {
-          return Theme(
-            data: ThemeData(useMaterial3: true),
-            child: AlertDialog(
-              surfaceTintColor: disableTintColor ? backgroundColor : null,
+          return PopScope(
+            canPop: dialogDismissible,
 
-              /// Background Color
-              backgroundColor: backgroundColor,
+            child: Theme(
+              data: ThemeData(useMaterial3: true),
+              child: AlertDialog(
+                surfaceTintColor: disableTintColor ? backgroundColor : null,
 
-              /// Icon
-              icon: icon,
+                /// Background Color
+                backgroundColor: backgroundColor,
 
+                /// Icon
+                icon: icon,
+
+                /// Title
+                title: title != null ? Text(title!) : null,
+
+                /// Child Content Widget
+                content: SingleChildScrollView(
+                    child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: content,
+                )),
+
+                actions: <Widget>[
+                  /// Cancel Button
+                  TextButton(
+                    onPressed: () {
+                      if (onCancel != null) {
+                        onCancel!();
+                      }
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      cancelButtonTitle,
+                      style: TextStyle(color: cancelButtonColor),
+                    ),
+                  ),
+
+                  /// Confirm Button
+                  TextButton(
+                      onPressed: () {
+                        onAccept();
+                        //close window
+                        if (shouldCloseOnMainButton) {
+                          Navigator.pop(context);
+                        }
+                      },
+                      style: ButtonStyle(
+                        //color
+                        backgroundColor:
+                            MaterialStateProperty.all(mainButtonColor),
+                      ),
+                      //text
+                      child: Text(
+                        buttonTitle,
+                        style: TextStyle(color: backgroundColor),
+                      )),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  _cupertinoView() {
+    showCupertinoModalPopup<String>(
+        context: context,
+        barrierDismissible: dialogDismissible,
+        builder: (BuildContext context) {
+          return PopScope(
+            canPop: dialogDismissible,
+
+            child: CupertinoAlertDialog(
               /// Title
-              title: title != null ? Text(title!) : null,
+              title: title != null
+                  ? Text(
+                      title!,
+                      style: const TextStyle(fontSize: 18),
+                    )
+                  : SingleChildScrollView(child: content),
 
               /// Child Content Widget
-              content: SingleChildScrollView(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: content,
-              )),
+              content: title != null
+                  ? SingleChildScrollView(
+                      child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: content,
+                    ))
+                  : null,
 
               actions: <Widget>[
                 /// Cancel Button
-                TextButton(
+                CupertinoDialogAction(
                   onPressed: () {
                     if (onCancel != null) {
                       onCancel!();
@@ -92,7 +164,7 @@ class StandardDialog {
                 ),
 
                 /// Confirm Button
-                TextButton(
+                CupertinoDialogAction(
                     onPressed: () {
                       onAccept();
                       //close window
@@ -100,75 +172,14 @@ class StandardDialog {
                         Navigator.pop(context);
                       }
                     },
-                    style: ButtonStyle(
-                      //color
-                      backgroundColor:
-                          MaterialStateProperty.all(mainButtonColor),
-                    ),
+
                     //text
                     child: Text(
                       buttonTitle,
-                      style: TextStyle(color: backgroundColor),
+                      style: TextStyle(color: buttonColor),
                     )),
               ],
             ),
-          );
-        });
-  }
-
-  _cupertinoView() {
-    showCupertinoModalPopup<String>(
-        context: context,
-        builder: (BuildContext context) {
-          return CupertinoAlertDialog(
-            /// Title
-            title: title != null
-                ? Text(
-                    title!,
-                    style: const TextStyle(fontSize: 18),
-                  )
-                : SingleChildScrollView(child: content),
-
-            /// Child Content Widget
-            content: title != null
-                ? SingleChildScrollView(
-                    child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: content,
-                  ))
-                : null,
-
-            actions: <Widget>[
-              /// Cancel Button
-              CupertinoDialogAction(
-                onPressed: () {
-                  if (onCancel != null) {
-                    onCancel!();
-                  }
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  cancelButtonTitle,
-                  style: TextStyle(color: cancelButtonColor),
-                ),
-              ),
-
-              /// Confirm Button
-              CupertinoDialogAction(
-                  onPressed: () {
-                    onAccept();
-                    //close window
-                    if (shouldCloseOnMainButton) {
-                      Navigator.pop(context);
-                    }
-                  },
-
-                  //text
-                  child: Text(
-                    buttonTitle,
-                    style: TextStyle(color: buttonColor),
-                  )),
-            ],
           );
         });
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +15,7 @@ class TrailingActionDialog {
   Color? trailingButtonColor;
 
   Color? buttonColor;
+  bool dialogDismissible;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -29,6 +29,7 @@ class TrailingActionDialog {
     required this.onTrailingPressed,
     this.trailingButtonColor,
     this.buttonColor,
+    required this.dialogDismissible,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -46,59 +47,64 @@ class TrailingActionDialog {
 
     showDialog<String>(
         context: context,
+        barrierDismissible: dialogDismissible,
         builder: (BuildContext context) {
-          return Theme(
-            data: ThemeData(useMaterial3: true),
-            child: AlertDialog(
-              surfaceTintColor: disableTintColor ? backgroundColor : null,
+          return PopScope(
+            canPop: dialogDismissible,
 
-              /// Background Color
-              backgroundColor: backgroundColor,
+            child: Theme(
+              data: ThemeData(useMaterial3: true),
+              child: AlertDialog(
+                surfaceTintColor: disableTintColor ? backgroundColor : null,
 
-              /// Title
-              title: title != null ? Text(title!) : null,
+                /// Background Color
+                backgroundColor: backgroundColor,
 
-              /// Child Content Widget
-              content: SingleChildScrollView(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: content,
-              )),
+                /// Title
+                title: title != null ? Text(title!) : null,
 
-              actions: <Widget>[
-                Row(
-                  children: [
-                    /// Trailing Button
-                    TextButton(
-                      onPressed: () {
-                        onTrailingPressed();
-                      },
-                      child: Text(
-                        trailingButtonTitle,
-                        style: TextStyle(color: trailingButtonColor),
+                /// Child Content Widget
+                content: SingleChildScrollView(
+                    child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: content,
+                )),
+
+                actions: <Widget>[
+                  Row(
+                    children: [
+                      /// Trailing Button
+                      TextButton(
+                        onPressed: () {
+                          onTrailingPressed();
+                        },
+                        child: Text(
+                          trailingButtonTitle,
+                          style: TextStyle(color: trailingButtonColor),
+                        ),
                       ),
-                    ),
 
-                    const Spacer(),
+                      const Spacer(),
 
-                    /// Confirm Button
-                    ElevatedButton(
-                      onPressed: () {
-                        if (onAccept != null) onAccept!();
-                        Navigator.pop(context);
-                      },
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(mainButtonColor),
+                      /// Confirm Button
+                      ElevatedButton(
+                        onPressed: () {
+                          if (onAccept != null) onAccept!();
+                          Navigator.pop(context);
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(mainButtonColor),
+                        ),
+                        child: Text(
+                          buttonTitle,
+                          style: TextStyle(color: backgroundColor),
+                        ),
                       ),
-                      child: Text(
-                        buttonTitle,
-                        style: TextStyle(color: backgroundColor),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         });
@@ -107,59 +113,64 @@ class TrailingActionDialog {
   _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
+        barrierDismissible: dialogDismissible,
         builder: (BuildContext context) {
-          return CupertinoAlertDialog(
-            /// Title
-            title: title != null
-                ? Text(
-                    title!,
-                    style: const TextStyle(fontSize: 18),
-                  )
-                : SingleChildScrollView(child: content),
+          return PopScope(
+            canPop: dialogDismissible,
 
-            /// Child Content Widget
-            content: title != null
-                ? SingleChildScrollView(
-                    child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: content,
-                  ))
-                : null,
+            child: CupertinoAlertDialog(
+              /// Title
+              title: title != null
+                  ? Text(
+                      title!,
+                      style: const TextStyle(fontSize: 18),
+                    )
+                  : SingleChildScrollView(child: content),
 
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 4, bottom: 10),
-                child: Column(
-                  children: [
-                    /// Trailing Button
-                    CupertinoDialogAction(
-                      onPressed: () {
-                        onTrailingPressed();
-                      },
-                      child: Text(
-                        trailingButtonTitle,
-                        style: TextStyle(color: trailingButtonColor),
+              /// Child Content Widget
+              content: title != null
+                  ? SingleChildScrollView(
+                      child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: content,
+                    ))
+                  : null,
+
+              actions: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 4, bottom: 10),
+                  child: Column(
+                    children: [
+                      /// Trailing Button
+                      CupertinoDialogAction(
+                        onPressed: () {
+                          onTrailingPressed();
+                        },
+                        child: Text(
+                          trailingButtonTitle,
+                          style: TextStyle(color: trailingButtonColor),
+                        ),
                       ),
-                    ),
 
-                    const Divider(),
+                      const Divider(),
 
-                    /// Confirm Button
-                    CupertinoDialogAction(
-                      onPressed: () {
-                        if (onAccept != null) onAccept!();
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        buttonTitle,
-                        style: TextStyle(
-                            color: buttonColor, fontWeight: FontWeight.bold),
+                      /// Confirm Button
+                      CupertinoDialogAction(
+                        onPressed: () {
+                          if (onAccept != null) onAccept!();
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          buttonTitle,
+                          style: TextStyle(
+                              color: buttonColor, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         });
   }
