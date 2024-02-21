@@ -172,7 +172,7 @@ class ModernDialog {
     required Widget view,
     bool disablePadding = false,
     double? borderRadius,
-    Color dialogBackgroundColor = Colors.white,
+    Color backgroundColor = Colors.white,
     bool disableTintColor = false,
   }) {
     CustomDialog.show(
@@ -180,7 +180,7 @@ class ModernDialog {
       view: view,
       disablePadding: disablePadding,
       borderRadius: borderRadius,
-      backgroundColor: dialogBackgroundColor,
+      backgroundColor: backgroundColor,
       disableTintColor: disableTintColor,
     );
   }

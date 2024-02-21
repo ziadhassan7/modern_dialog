@@ -25,5 +25,5 @@
 ## 1.2.0
 * Custom dialog is more customized!!
 
-## 1.2.1
+## 1.2.2
 * Minor change.
