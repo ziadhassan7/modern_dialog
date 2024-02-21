@@ -28,5 +28,5 @@
 ## 1.2.2
 * Minor change.
 
-## 1.2.3
+## 1.2.4
 * Allow dialog to be dismissible
