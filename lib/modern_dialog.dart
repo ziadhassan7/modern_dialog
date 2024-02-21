@@ -170,12 +170,16 @@ class ModernDialog {
   static showCustom(
     BuildContext context, {
     required Widget view,
+    bool disablePadding = false,
+    double? borderRadius,
     Color dialogBackgroundColor = Colors.white,
     bool disableTintColor = false,
   }) {
     CustomDialog.show(
       context,
       view: view,
+      disablePadding: disablePadding,
+      borderRadius: borderRadius,
       backgroundColor: dialogBackgroundColor,
       disableTintColor: disableTintColor,
     );

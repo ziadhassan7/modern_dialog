@@ -21,3 +21,9 @@
 
 ## 1.1.0
 * Adjust layout.
+
+## 1.2.0
+* Custom dialog is more customized!!
+
+## 1.2.1
+* Minor change.
