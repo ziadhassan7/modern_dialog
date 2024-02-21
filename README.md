@@ -200,6 +200,10 @@ ModernDialog.showCustom(
 <summary>More Customization</summary>
 
 ```dart
+    // Change defualt radius
+    borderRadius: 70,
+    // Disable inner padding
+    disablePadding: true,
     // Change background color (Only in Android)
     backgroundColor: Colors.grey,
     // Disable the default tint color (Only in Android)
@@ -242,4 +246,8 @@ ModernDialog.showCustom(
 | Name | Description | Data type | Default value | 
 |:------------|-----------------------------------------|----------|-----------|
 | view | Widget for the the Custom Dialog | Widget | - | 
+| borderRadius | override the default dialog padding | Widget | - | 
+| disablePadding | Disable the dialog's default padding | Widget | false | 
+| backgroundColor | Dialog's background color. (Only Android) | Color | white | 
+| disableTintColor | Disables the color tint applied on the background color. (Only Android) | bool | false |
  
