@@ -48,6 +48,8 @@ ModernDialog.showStandard(
     onCancel: (){},
     // Change the default cancel button title
     cancelButtonTitle: "",
+    // Allow dialog to be dismissible
+    dialogDismissible: true,
     // Change the background color of dialog (Only Android)
     backgroundColor: Colors.orange,
     // Disable the default tint color of material design 3 (Only Android). 
@@ -84,6 +86,8 @@ ModernDialog.showInfo(
     buttonTitle: "Save",
     // Custom main button color
     mainButtonColor: Colors.red,
+    // Allow dialog to be dismissible
+    dialogDismissible: true,
     // Change background color (Only in Android)
     backgroundColor: Colors.grey,
     // Disable the default tint color (Only in Android)
@@ -122,6 +126,8 @@ ModernDialog.showTrailingAction(
     mainButtonColor: Colors.red,
     // Custom trailing button color
     trailingButtonColor: Colors.red,
+    // Allow dialog to be dismissible
+    dialogDismissible: true,
     // Change background color (Only in Android)
     backgroundColor: Colors.grey,
     // Disable the default tint color (Only in Android)
@@ -170,6 +176,8 @@ ModernDialog.showVerticalDialog(
     icon: const Icon(Icons.ac_unit),
     // Add a title
     title: "Title",
+    // Allow dialog to be dismissible
+    dialogDismissible: true,
     // Change background color (Only in Android)
     backgroundColor: Colors.grey,
     // Disable the default tint color (Only in Android)
@@ -204,6 +212,8 @@ ModernDialog.showCustom(
     borderRadius: 70,
     // Disable inner padding
     disablePadding: true,
+    // Allow dialog to be dismissible
+    dialogDismissible: true,
     // Change background color (Only in Android)
     backgroundColor: Colors.grey,
     // Disable the default tint color (Only in Android)
@@ -227,6 +237,7 @@ ModernDialog.showCustom(
 | cancelButtonColor | Cancel button color | Color | - |
 | mainButtonColor | Main button color | Color | ColorScheme.primary |
 | shouldCloseOnMainButton | Close the dialog when pressing the main button. | bool | true |
+| dialogDismissible | Allow dialog to be dismissible. | bool | true | 
 | backgroundColor | Dialog's background color. (Only Android) | Color | white | 
 | disableTintColor | Disables the color tint applied on the background color. (Only Android) | bool | false |
 
