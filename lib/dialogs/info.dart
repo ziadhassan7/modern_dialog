@@ -9,7 +9,7 @@ class InfoDialog {
   String buttonTitle;
 
   Color? buttonColor;
-  bool dialogDismissible;
+  bool dismissibleDialog;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -19,7 +19,7 @@ class InfoDialog {
     required this.content,
     required this.buttonTitle,
     this.buttonColor,
-    required this.dialogDismissible,
+    required this.dismissibleDialog,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -37,10 +37,10 @@ class InfoDialog {
 
     showDialog<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: Theme(
               data: ThemeData(useMaterial3: true),
@@ -81,10 +81,10 @@ class InfoDialog {
   _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: CupertinoAlertDialog(
               /// Title

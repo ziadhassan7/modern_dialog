@@ -18,7 +18,7 @@ class StandardDialog {
   String cancelButtonTitle;
 
   bool shouldCloseOnMainButton;
-  bool dialogDismissible;
+  bool dismissibleDialog;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -34,7 +34,7 @@ class StandardDialog {
     this.cancelButtonColor,
     required this.cancelButtonTitle,
     required this.shouldCloseOnMainButton,
-    required this.dialogDismissible,
+    required this.dismissibleDialog,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -55,10 +55,10 @@ class StandardDialog {
 
     showDialog<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: Theme(
               data: ThemeData(useMaterial3: true),
@@ -125,10 +125,10 @@ class StandardDialog {
   _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: CupertinoAlertDialog(
               /// Title

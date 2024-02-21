@@ -8,7 +8,7 @@ class CustomDialog {
 
   bool disablePadding;
   double? borderRadius;
-  bool dialogDismissible;
+  bool dismissibleDialog;
 
   Color backgroundColor;
   bool disableTintColor;
@@ -18,7 +18,7 @@ class CustomDialog {
     required this.view,
     required this.disablePadding,
     this.borderRadius,
-    required this.dialogDismissible,
+    required this.dismissibleDialog,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -37,10 +37,10 @@ class CustomDialog {
   _materialView() {
     showDialog<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: Theme(
               data: ThemeData(useMaterial3: true),
@@ -66,10 +66,10 @@ class CustomDialog {
   _cupertinoView() {
     showCupertinoModalPopup(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: CupertinoAlertDialog(
               /// Child Content Widget

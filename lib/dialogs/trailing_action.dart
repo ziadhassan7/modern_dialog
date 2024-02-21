@@ -15,7 +15,7 @@ class TrailingActionDialog {
   Color? trailingButtonColor;
 
   Color? buttonColor;
-  bool dialogDismissible;
+  bool dismissibleDialog;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -29,7 +29,7 @@ class TrailingActionDialog {
     required this.onTrailingPressed,
     this.trailingButtonColor,
     this.buttonColor,
-    required this.dialogDismissible,
+    required this.dismissibleDialog,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -47,10 +47,10 @@ class TrailingActionDialog {
 
     showDialog<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: Theme(
               data: ThemeData(useMaterial3: true),
@@ -113,10 +113,10 @@ class TrailingActionDialog {
   _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: CupertinoAlertDialog(
               /// Title

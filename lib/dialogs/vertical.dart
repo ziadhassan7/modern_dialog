@@ -11,7 +11,7 @@ class VerticalDialog {
 
   List<DialogButton> buttons;
 
-  bool dialogDismissible;
+  bool dismissibleDialog;
   Color backgroundColor;
   bool disableTintColor;
 
@@ -21,7 +21,7 @@ class VerticalDialog {
     this.title,
     required this.content,
     required this.buttons,
-    required this.dialogDismissible,
+    required this.dismissibleDialog,
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
@@ -36,10 +36,10 @@ class VerticalDialog {
   _materialView() {
     showDialog<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: Theme(
               data: ThemeData(useMaterial3: true),
@@ -105,10 +105,10 @@ class VerticalDialog {
   _cupertinoView() {
     showCupertinoModalPopup<String>(
         context: context,
-        barrierDismissible: dialogDismissible,
+        barrierDismissible: dismissibleDialog,
         builder: (BuildContext context) {
           return PopScope(
-            canPop: dialogDismissible,
+            canPop: dismissibleDialog,
 
             child: CupertinoAlertDialog(
               /// Title
