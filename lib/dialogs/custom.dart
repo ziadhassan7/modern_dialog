@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomDialog {
@@ -22,16 +20,7 @@ class CustomDialog {
     required this.backgroundColor,
     required this.disableTintColor,
   }) {
-    // Decide dialog layout based on platform
-    if (defaultTargetPlatform == TargetPlatform.iOS) {
-      if (borderRadius == null && disablePadding == false) {
-        _cupertinoView();
-      } else {
-        _materialView();
-      }
-    } else {
-      _materialView();
-    }
+    _materialView();
   }
 
   _materialView() {
@@ -58,22 +47,6 @@ class CustomDialog {
                 /// Child Content Widget
                 content: SingleChildScrollView(child: view),
               ),
-            ),
-          );
-        });
-  }
-
-  _cupertinoView() {
-    showCupertinoModalPopup(
-        context: context,
-        barrierDismissible: dismissibleDialog,
-        builder: (BuildContext context) {
-          return PopScope(
-            canPop: dismissibleDialog,
-
-            child: CupertinoAlertDialog(
-              /// Child Content Widget
-              content: SingleChildScrollView(child: view),
             ),
           );
         });
