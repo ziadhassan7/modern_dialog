@@ -30,3 +30,6 @@
 
 ## 1.2.5
 * Allow dialog to be dismissible
+
+* ## 1.3.0
+* Make custom view consistent across iOS & Android.
